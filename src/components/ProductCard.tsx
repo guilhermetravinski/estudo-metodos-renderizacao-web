@@ -36,7 +36,10 @@ export function ProductCard({ product, method }: ProductCardProps) {
         </CardContent>
         <CardFooter className="items-center justify-between">
           <span className="text-gray-700">R$ {product.price.toFixed(2)}</span>
-          <Button>Adicionar ao carrinho</Button>
+
+          <Link href={`/${method}/cart`} passHref>
+            <Button>Adicionar ao carrinho</Button>
+          </Link>
         </CardFooter>
       </Card>
     </Link>

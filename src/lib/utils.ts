@@ -15,6 +15,7 @@ export function traduzirProdutos(produtos: Product[]): Product[] {
     description: traduzirDescricao(produto.description),
     category: traduzirCategoria(produto.category),
     image: produto.image,
+    quantity: produto.quantity,
   }))
 }
 

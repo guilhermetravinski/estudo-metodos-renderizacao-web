@@ -1,21 +1,22 @@
 import { Loader2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-import { ProductsGrid } from '@/components/ProductsGrid'
-import { fetchProducts } from '@/lib/api'
+import Cart from '@/components/Cart'
+import { fetchCart } from '@/lib/api'
 import { Product } from '@/lib/definitions'
 
-export default function HomePage() {
+export default function CartPage() {
   const [products, setProducts] = useState<Product[]>([])
+
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    async function fetchProductsFn() {
+    async function fetchCartFn() {
       setIsLoading(true)
-      setProducts(await fetchProducts())
+      setProducts(await fetchCart())
       setIsLoading(false)
     }
-    fetchProductsFn()
+    fetchCartFn()
   }, [])
 
   return isLoading ? (
@@ -23,6 +24,6 @@ export default function HomePage() {
       <Loader2 className="h-8 w-8 animate-spin" />
     </div>
   ) : (
-    <ProductsGrid products={products} method="csr" />
+    <Cart products={products} method="csr" />
   )
 }
