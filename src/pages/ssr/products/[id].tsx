@@ -30,7 +30,7 @@ export default function ProductDetailsPage({
     )
   }
 
-  return <ProductDetails product={product} />
+  return <ProductDetails product={product} method="ssr" />
 }
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const productId = params?.id as string

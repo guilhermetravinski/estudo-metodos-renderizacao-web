@@ -30,7 +30,7 @@ export default function ProductDetailsPage({
     )
   }
 
-  return <ProductDetails product={product} />
+  return <ProductDetails product={product} method="ssg" />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

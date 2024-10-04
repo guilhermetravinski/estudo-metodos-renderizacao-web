@@ -90,7 +90,7 @@ export default function Cart({ products, method }: CartProps) {
                     />
                   </div>
                   <Button
-                    className="mt-4"
+                    className="mt-4 w-full"
                     variant="destructive"
                     onClick={() => removeProduct(product.id)}
                   >

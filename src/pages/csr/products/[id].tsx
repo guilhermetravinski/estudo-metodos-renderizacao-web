@@ -32,6 +32,6 @@ export default function ProductDetailsPage() {
       <span>Produto não encontrado!</span>
     </div>
   ) : (
-    <ProductDetails product={product} />
+    <ProductDetails product={product} method="csr" />
   )
 }
