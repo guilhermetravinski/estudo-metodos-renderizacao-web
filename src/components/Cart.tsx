@@ -51,7 +51,14 @@ export default function Cart({ products, method }: CartProps) {
 
       {/* Verifica se o carrinho está vazio */}
       {cart.length === 0 ? (
-        <p>Seu carrinho está vazio.</p>
+        <div className="mx-auto flex max-w-72 flex-col items-center gap-3">
+          <p>Seu carrinho está vazio.</p>
+          <Link className="w-full" href={`/${method}`} passHref>
+            <Button className="w-full" variant="outline">
+              Voltar
+            </Button>
+          </Link>
+        </div>
       ) : (
         <div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
