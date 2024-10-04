@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: (await fetchProducts()).map((product) => ({
       params: { id: product.id.toString() },
     })),
-    fallback: true,
+    fallback: false,
   }
 }
 
