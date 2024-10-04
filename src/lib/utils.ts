@@ -8,7 +8,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function traduzirProdutos(produtos: Product[]): Product[] {
-  console.log(traduzirTitulo(produtos[0].title))
   return produtos.map((produto) => ({
     id: produto.id,
     title: traduzirTitulo(produto.title),

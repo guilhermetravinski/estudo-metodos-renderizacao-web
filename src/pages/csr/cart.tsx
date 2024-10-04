@@ -7,7 +7,6 @@ import { Product } from '@/lib/definitions'
 
 export default function CartPage() {
   const [products, setProducts] = useState<Product[]>([])
-
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {

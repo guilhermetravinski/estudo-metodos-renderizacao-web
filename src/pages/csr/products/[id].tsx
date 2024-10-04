@@ -27,11 +27,7 @@ export default function ProductDetailsPage() {
     <div className="flex h-screen items-center justify-center">
       <Loader2 className="h-8 w-8 animate-spin" />
     </div>
-  ) : product === null ? (
-    <div className="flex h-screen items-center justify-center">
-      <span>Produto não encontrado!</span>
-    </div>
   ) : (
-    <ProductDetails product={product} method="csr" />
+    <ProductDetails product={product!} method="csr" />
   )
 }
