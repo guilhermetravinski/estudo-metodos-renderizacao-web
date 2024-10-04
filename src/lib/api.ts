@@ -31,10 +31,9 @@ export async function fetchProductDetails(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 2000))
   const response = await fetch(`https://fakestoreapi.com/products/${id}`)
   const product = (await response.json()) as Product
-
-  const produtosComQuantidade = products.map((product) => ({
+  const produtoComQuantidade = {
     ...product,
     quantity: 1,
-  }))
-  return traduzirProdutos(produtosComQuantidade)
+  }
+  return traduzirProdutos([produtoComQuantidade])[0]
 }

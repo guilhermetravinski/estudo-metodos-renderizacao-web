@@ -3,38 +3,33 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import { ProductDetails } from '@/components/ProductDetails'
+import { fetchProductDetails } from '@/lib/api'
 import { Product } from '@/lib/definitions'
 
-export default function ProductDetail() {
+export default function ProductDetailsPage() {
   const router = useRouter()
   const { id } = router.query
   const [product, setProduct] = useState<Product | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
-  // Fetch product details based on the ID from the URL
   useEffect(() => {
-    async function fetchProduct() {
-      const response = await fetch(`/api/products/${id}`)
-      const data = await response.json()
-      setProduct(data)
-      setLoading(false)
+    async function fetchProductDetailsFn() {
+      setIsLoading(true)
+      setProduct(await fetchProductDetails(id as string))
+      setIsLoading(false)
     }
     if (id) {
-      fetchProduct()
+      fetchProductDetailsFn()
     }
   }, [id])
-
-  if (!product) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <span>Produto não encontrado!</span>
-      </div>
-    )
-  }
 
   return isLoading ? (
     <div className="flex h-screen items-center justify-center">
       <Loader2 className="h-8 w-8 animate-spin" />
+    </div>
+  ) : product === null ? (
+    <div className="flex h-screen items-center justify-center">
+      <span>Produto não encontrado!</span>
     </div>
   ) : (
     <ProductDetails product={product} />
